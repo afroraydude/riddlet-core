@@ -4,9 +4,11 @@
   "description": "The core library for all Riddlet apps",
   "main": "index.js",
   "dependencies": {
+    "buffer": "^5.1.0",
     "crypto": "^1.0.1",
-    "keypair": "^1.0.1",
-    "buffer": "^5.1.0"
+    "events": "^2.0.0",
+    "jsonwebtoken": "^8.2.1",
+    "keypair": "^1.0.1"
   },
   "devDependencies": {},
   "scripts": {
