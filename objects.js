@@ -7,7 +7,7 @@ class RiddletEvent extends EventEmitter {}
 
 class RiddletMessage {
     constructor(data, room, user) {
-        if (room && user && data) {
+        if (room && user) {
             this.data = data
             this.id = Date.now() + "" + (Math.floor(Math.random() * 99) + 10)
             this.room = room
@@ -15,7 +15,7 @@ class RiddletMessage {
             this.nickname = user.nickname
             this.color = user.color
             this.img = user.img
-        } else if (data) {
+        } else {
             this.data = data.data
             this.id = data.id
             this.room = data.room
@@ -44,17 +44,21 @@ class RiddletMessage {
         }
     }
     
-    decrypt(key) {
+    decrypt(abc) {
+        if (!abc)
+            return
+        else {
         try {
         var output = "";
         this.data.forEach(function(message) {
-            const buffer = new bufferlib(message, "base64");
-            const decrypted = crypto.publicDecrypt(key, buffer).toString('utf8');
+            const buffer = new Buffer(message, "base64");
+            var decrypted = crypto.publicDecrypt(abc, buffer);
             output += decrypted
         }.bind(this))
         this.data = output
         } catch(e) {
             console.log("Unable to decrypt: "+e)
+        }
         }
     }
 }
