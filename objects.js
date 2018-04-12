@@ -60,11 +60,12 @@ class RiddletMessage {
 }
 
 class RiddletUser {
-    constructor(name, nickname, color, img) {
+    constructor(name, nickname, color, img, id) {
         this.name = name
         this.nickname = nickname
         this.color = color
         this.img = img
+        this.id = id
     }
     
     toString() {
