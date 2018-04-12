@@ -4,10 +4,8 @@ class Riddlet {
     constructor(config) {
         const keypair = require('keypair')
         const pair = keypair()
-        this.pubkey = pair.public
-        this.privkey = pair.private
-        this.crypto =  require("crypto")
-        this.buffer = require("buffer").Buffer
+        this.pubkey = (config && config.pubkey) ? config.pubkey : pair.public
+        this.privkey = (config && config.privkey) ? config.privkey : pair.private
         this.isSecure = (config && config.isSecure) ? config.isSecure : false
     }
     
