@@ -2,10 +2,15 @@ var objects = require('./objects')
 
 class Riddlet {
     constructor(config) {
-        const keypair = require('keypair')
-        const pair = keypair()
-        this.pubkey = (config && config.pubkey) ? config.pubkey : pair.public
-        this.privkey = (config && config.privkey) ? config.privkey : pair.private
+        if (!config || !config.privkey || !config.pubkey) {
+            const keypair = require('keypair')
+            const pair = keypair()
+            this.pubkey - pair.public
+            this.privkey = pair.private
+        } else {
+            this.pubkey = config.pubkey
+            this.privkey = config.privkey
+        }
         this.isSecure = (config && config.isSecure) ? config.isSecure : false
     }
     
