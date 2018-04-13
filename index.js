@@ -16,8 +16,6 @@ class Riddlet {
     }
 }
 
-var x = new Riddlet(null)
-
 exports.Riddlet = Riddlet
 exports.RiddletMessage = objects.RiddletMessage
 exports.RiddletUser = objects.RiddletUser
